@@ -7,6 +7,8 @@ project(stereo_test VERSION 1.0)
 
 set(SRCS
     src/main.cpp
+    src/Core.cpp
+    src/parsing/Parser.cpp
 )
 
 add_executable(stereo ${SRCS})
