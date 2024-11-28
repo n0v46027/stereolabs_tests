@@ -1,0 +1,17 @@
+# MegaLinter Configuration
+APPLY_FIXES: all
+
+ENABLE_LINTERS:
+  - CPP_CPPLINT
+  - CPP_CLANG_FORMAT
+
+DISABLE:
+  - COPYPASTE 
+
+LINTER_RULES:
+  CPP_CPPLINT:
+    filter: "-build/include_subdir" 
+
+SHOW_ELAPSED_TIME: true
+
+FILEIO_REPORTER: true
