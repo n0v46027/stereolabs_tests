@@ -1,5 +1,5 @@
-#ifndef PARSER_HPP_
-#define PARSER_HPP_
+#ifndef INCLUDE_PARSING_PARSER_HPP_
+#define INCLUDE_PARSING_PARSER_HPP_
 
 class Parser {
     public:
@@ -10,4 +10,4 @@ class Parser {
     private:
 };
 
-#endif /* !PARSER_HPP_ */
+#endif // INCLUDE_PARSING_PARSER_HPP_
