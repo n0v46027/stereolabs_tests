@@ -1,0 +1,22 @@
+name: C++ ubuntu Build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up build dependencies
+        run: sudo apt update && sudo apt install -y g++ make
+
+      - name: Compile C++ code
+        run: |
+          ./utils/build.sh
