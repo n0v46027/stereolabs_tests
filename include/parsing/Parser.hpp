@@ -2,12 +2,12 @@
 #define INCLUDE_PARSING_PARSER_HPP_
 
 class Parser {
-    public:
-        Parser();
-        ~Parser();
+public:
+  Parser();
+  ~Parser();
 
-    protected:
-    private:
+protected:
+private:
 };
 
-#endif // INCLUDE_PARSING_PARSER_HPP_
+#endif  // INCLUDE_PARSING_PARSER_HPP_

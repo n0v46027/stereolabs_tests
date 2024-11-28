@@ -2,13 +2,13 @@
 #define INCLUDE_CORE_HPP_
 
 class Core {
-    public:
-        Core();
-        void run();
-        ~Core();
+public:
+  Core();
+  void run();
+  ~Core();
 
-    protected:
-    private:
+protected:
+private:
 };
 
-#endif // INCLUDE_CORE_HPP_
+#endif  // INCLUDE_CORE_HPP_
