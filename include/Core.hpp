@@ -1,14 +1,14 @@
-#ifndef CORE_HPP_
-#define CORE_HPP_
+#ifndef INCLUDE_CORE_HPP_
+#define INCLUDE_CORE_HPP_
 
 class Core {
-    public:
-        Core();
-        void run();
-        ~Core();
+public:
+  Core();
+  void run();
+  ~Core();
 
-    protected:
-    private:
+protected:
+private:
 };
 
-#endif /* !CORE_HPP_ */
+#endif  // INCLUDE_CORE_HPP_
