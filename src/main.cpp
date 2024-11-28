@@ -1,13 +1,14 @@
 #include <iostream>
-#include <memory>
 
 #include "Core.hpp"
-#include "macros.hpp"
+
+static const int KO = 84;
+static const int OK = 0;
 
 int main(void) {
   try {
-    std::unique_ptr<Core> core = std::make_unique<Core>();
-    core->run();
+    Core core = Core();
+    core.run();
     return OK;
   } catch (const std::exception& e) {
     std::cerr << e.what() << '\n';

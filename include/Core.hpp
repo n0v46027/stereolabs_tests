@@ -1,5 +1,6 @@
 #ifndef INCLUDE_CORE_HPP_
 #define INCLUDE_CORE_HPP_
+#include "parsing/Parser.hpp"
 
 class Core {
 public:
@@ -9,6 +10,8 @@ public:
 
 protected:
 private:
+    Parser _parser;
+
 };
 
 #endif  // INCLUDE_CORE_HPP_

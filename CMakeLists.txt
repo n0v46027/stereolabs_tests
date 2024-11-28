@@ -11,6 +11,11 @@ set(SRCS
     src/parsing/Parser.cpp
 )
 
+find_package(OpenCV REQUIRED)
+
+find_package(Eigen3 REQUIRED)
+
 add_executable(stereo ${SRCS})
 
-target_include_directories(stereo PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
+target_include_directories(stereo PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include ${EIGEN3_INCLUDE_DIR})
+target_link_libraries(stereo ${OpenCV_LIBS})
