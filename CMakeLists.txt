@@ -13,5 +13,4 @@ set(SRCS
 
 add_executable(stereo ${SRCS})
 
-target_include_directories(stereo PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include ${EIGEN3_INCLUDE_DIR})
-target_link_libraries(stereo ${OpenCV_LIBS})
+target_include_directories(stereo PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
