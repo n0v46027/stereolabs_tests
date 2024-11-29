@@ -9,4 +9,4 @@ struct point3D {
        bool _is_in_range = false;
 };
 
-#endif //INCLUDE_POINT_HPP_
+#endif  // INCLUDE_POINT_HPP_

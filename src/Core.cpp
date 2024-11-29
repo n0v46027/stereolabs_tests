@@ -5,8 +5,7 @@
 #include "Point.hpp"
 #include "Core.hpp"
 
-Core::Core()
-: _parser(Parser()){
+Core::Core() : _parser(Parser()) {
 }
 
 void Core::transform_matrix(const std::array<std::array<double, MATRIX_SIZE>, MATRIX_SIZE> &matrix, const std::vector<point3D> &points, std::vector<point3D> &transform_points) {
@@ -36,6 +35,7 @@ void Core::run() {
     transform_matrix(_parser.get_matrix().at(CLOUD_POINT_1), _parser.get_points().at(CLOUD_POINT_1), _transform_points.at(CLOUD_POINT_1));
     transform_matrix(_parser.get_matrix().at(CLOUD_POINT_2), _parser.get_points().at(CLOUD_POINT_2), _transform_points.at(CLOUD_POINT_2));
     compute_distance(_transform_points.at(CLOUD_POINT_1));
+    compute_distance(_transform_points.at(CLOUD_POINT_2));
 }
 
 Core::~Core() {

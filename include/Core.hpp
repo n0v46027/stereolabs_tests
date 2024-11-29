@@ -10,14 +10,16 @@ public:
 
   void transform_matrix(const std::array<std::array<double, MATRIX_SIZE>, MATRIX_SIZE> &, const std::vector<point3D> &, std::vector<point3D> &);
   void compute_distance(std::vector<point3D> &);
+  void transform_matrix(
+      const std::array<std::array<double, MATRIX_SIZE>, MATRIX_SIZE> &,
+      const std::vector<point3D> &, std::vector<point3D> &);
   void run();
   ~Core();
 
 protected:
 private:
-    Parser _parser;
-    std::array<std::vector<point3D>, 2> _transform_points;
-
+  Parser _parser;
+  std::array<std::vector<point3D>, 2> _transform_points;
 };
 
 #endif  // INCLUDE_CORE_HPP_
