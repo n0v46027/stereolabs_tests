@@ -9,6 +9,7 @@ public:
   Core();
 
   void transform_matrix(const std::array<std::array<double, MATRIX_SIZE>, MATRIX_SIZE> &, const std::vector<point3D> &, std::vector<point3D> &);
+  void compute_distance(std::vector<point3D> &);
   void run();
   ~Core();
 

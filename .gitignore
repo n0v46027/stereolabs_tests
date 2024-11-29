@@ -29,6 +29,7 @@
 # Executables
 *.exe
 *.out
+log.txt
 *.app
 
 cmake_install.cmake

@@ -19,13 +19,23 @@ void Core::transform_matrix(const std::array<std::array<double, MATRIX_SIZE>, MA
             }
         }
         transform_points.push_back(new_point);
-        break;
+        new_point = {0};
+    }
+}
+
+void Core::compute_distance(std::vector<point3D> &transform_points) {
+    for (auto &point: transform_points) {
+        double distance = std::sqrt((point._points3D.at(0) * point._points3D.at(0)) + (point._points3D.at(1) * point._points3D.at(1)) + (point._points3D.at(2) * point._points3D.at(2)));
+        if (distance >= 1 && distance <= 2) {
+            point._is_in_range = true;
+        }
     }
 }
 
 void Core::run() {
     transform_matrix(_parser.get_matrix().at(CLOUD_POINT_1), _parser.get_points().at(CLOUD_POINT_1), _transform_points.at(CLOUD_POINT_1));
     transform_matrix(_parser.get_matrix().at(CLOUD_POINT_2), _parser.get_points().at(CLOUD_POINT_2), _transform_points.at(CLOUD_POINT_2));
+    compute_distance(_transform_points.at(CLOUD_POINT_1));
 }
 
 Core::~Core() {
