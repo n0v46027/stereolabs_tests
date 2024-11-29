@@ -8,3 +8,12 @@
 ## distance
 
 - find the formula https://www.omnicalculator.com/math/3d-distance
+
+## hsv
+
+- learn hsv https://fr.wikipedia.org/wiki/Teinte_Saturation_Valeur
+- program to convert rgb to hsv https://www.geeksforgeeks.org/program-change-rgb-color-model-hsv-color-model/
+
+## openCV
+
+- openCv official documentation https://docs.opencv.org/

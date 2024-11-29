@@ -2,6 +2,9 @@
 #include <vector>
 #include <iostream>
 #include <cmath>
+#include <algorithm>
+#include <tuple>
+#include <opencv2/opencv.hpp>
 
 #include "Point.hpp"
 #include "Core.hpp"
@@ -21,10 +24,30 @@ void Core::transform_matrix(
         new_point._points3D.at(i) += point._points3D.at(j) * matrix.at(i).at(j);
       }
     }
+    new_point._points2D = point._points2D;
+    new_point._rgb = point._rgb;
     transform_points.push_back(new_point);
     new_point = {0};
   }
 }
+
+bool Core::is_red(std::array<uint16_t, 3> &rgb) {
+    cv::Mat rgb_pixel(1, 1, CV_8UC3, cv::Scalar(rgb[2], rgb[1], rgb[0]));
+    cv::Mat hsv_pixel;
+    cv::cvtColor(rgb_pixel, hsv_pixel, cv::COLOR_BGR2HSV);
+
+    cv::Vec3b hsv = hsv_pixel.at<cv::Vec3b>(0, 0);
+    int h = hsv[0];
+    int s = hsv[1];
+    int v = hsv[2];
+
+    bool hueInRange = (h >= 0 && h <= 10) || (h >= 160 && h <= 180);
+    bool saturationInRange = (s > 100);
+    bool valueInRange = (v > 100);
+    
+    return hueInRange && saturationInRange && valueInRange;
+}
+  
 
 void Core::compute_distance(std::vector<point3D> &transform_points) {
   for (auto &point : transform_points) {
@@ -32,7 +55,7 @@ void Core::compute_distance(std::vector<point3D> &transform_points) {
         std::sqrt((point._points3D.at(0) * point._points3D.at(0)) +
                   (point._points3D.at(1) * point._points3D.at(1)) +
                   (point._points3D.at(2) * point._points3D.at(2)));
-    if (distance >= 1 && distance <= 2) {
+    if (distance >= 1 && distance <= 2 && is_red(point._rgb)) {
       point._is_in_range = true;
     }
   }

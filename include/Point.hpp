@@ -2,6 +2,18 @@
 #define INCLUDE_POINT_HPP_
 #include <array>
 
+enum {
+       RED = 0,
+       GREEN = 1,
+       BLUE = 2,
+};
+
+enum {
+       HUE = 0,
+       SATURATION = 1,
+       VALUE = 2,
+};
+
 struct point3D {
   std::array<uint16_t, 2> _points2D;
   std::array<double, 4> _points3D;
