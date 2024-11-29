@@ -1,5 +1,5 @@
-#ifndef INCLUDE_CLOUD_POINT_HPP_
-#define INCLUDE_CLOUD_POINT_HPP_
+#ifndef INCLUDE_POINT_HPP_
+#define INCLUDE_POINT_HPP_
 #include <array>
 
 struct point3D {
@@ -8,4 +8,4 @@ struct point3D {
        std::array<uint16_t, 3> _rgb;
 };
 
-#endif // INCLUDE_CLOUD_POINT_HPP_
+#endif //INCLUDE_POINT_HPP_
