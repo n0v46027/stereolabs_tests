@@ -7,10 +7,19 @@
 #include "Point.hpp"
 
 static const char CLOUD_POINT_PATH[2][18] = {"conf/ptcloud1.txt", "conf/ptcloud2.txt"};
+static const char FILE_ERROR[] = "Unable to open file";
 
 Parser::Parser() {
     parse(CLOUD_POINT_1);
     parse(CLOUD_POINT_2);
+}
+
+std::array<std::array<std::array<double, MATRIX_SIZE>, MATRIX_SIZE>, 2> Parser::get_matrix() const {
+    return _matrix;
+}
+
+std::array<std::vector<point3D>, 2> Parser::get_points() const {
+    return _points;
 }
 
 void Parser::parse(int cloud_nb) {
@@ -19,7 +28,7 @@ void Parser::parse(int cloud_nb) {
     point3D point;
 
     if (!file.is_open())
-        throw std::runtime_error("Unable to open file");
+        throw std::runtime_error(FILE_ERROR);
     for (int i = 0; i < MATRIX_SIZE; i++) {
         for (int j = 0; j < MATRIX_SIZE; j++) {
             file >> _matrix[cloud_nb][i][j];
@@ -32,6 +41,7 @@ void Parser::parse(int cloud_nb) {
         for (int i = 0; i < 3; i++) {
             file >> point._points3D[i];
         }
+        point._points3D[3] = 1;
         for (int i = 0; i < 3; i++) {
             file >> point._rgb[i];
         }

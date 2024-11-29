@@ -16,6 +16,8 @@ enum {
 class Parser {
 public:
   Parser();
+  std::array<std::array<std::array<double, MATRIX_SIZE>, MATRIX_SIZE>, 2> get_matrix() const;
+  std::array<std::vector<point3D>, 2> get_points() const;
   ~Parser();
 
 protected:

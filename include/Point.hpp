@@ -4,7 +4,7 @@
 
 struct point3D {
        std::array<uint16_t, 2> _points2D;
-       std::array<double, 3> _points3D;
+       std::array<double, 4> _points3D;
        std::array<uint16_t, 3> _rgb;
 };
 
