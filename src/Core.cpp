@@ -25,29 +25,28 @@ void Core::transform_matrix(
       }
     }
     new_point._points2D = point._points2D;
-    new_point._rgb = point._rgb;
+    new_point._rgb      = point._rgb;
     transform_points.push_back(new_point);
     new_point = {0};
   }
 }
 
 bool Core::is_red(std::array<uint16_t, 3> &rgb) {
-    cv::Mat rgb_pixel(1, 1, CV_8UC3, cv::Scalar(rgb[2], rgb[1], rgb[0]));
-    cv::Mat hsv_pixel;
-    cv::cvtColor(rgb_pixel, hsv_pixel, cv::COLOR_BGR2HSV);
+  cv::Mat rgb_pixel(1, 1, CV_8UC3, cv::Scalar(rgb[2], rgb[1], rgb[0]));
+  cv::Mat hsv_pixel;
+  cv::cvtColor(rgb_pixel, hsv_pixel, cv::COLOR_BGR2HSV);
 
-    cv::Vec3b hsv = hsv_pixel.at<cv::Vec3b>(0, 0);
-    int h = hsv[0];
-    int s = hsv[1];
-    int v = hsv[2];
+  cv::Vec3b hsv = hsv_pixel.at<cv::Vec3b>(0, 0);
+  int h         = hsv[0];
+  int s         = hsv[1];
+  int v         = hsv[2];
 
-    bool hueInRange = (h >= 0 && h <= 10) || (h >= 160 && h <= 180);
-    bool saturationInRange = (s > 100);
-    bool valueInRange = (v > 100);
-    
-    return hueInRange && saturationInRange && valueInRange;
+  bool hueInRange        = (h >= 0 && h <= 10) || (h >= 160 && h <= 180);
+  bool saturationInRange = (s > 100);
+  bool valueInRange      = (v > 100);
+
+  return hueInRange && saturationInRange && valueInRange;
 }
-  
 
 void Core::compute_distance(std::vector<point3D> &transform_points) {
   for (auto &point : transform_points) {
