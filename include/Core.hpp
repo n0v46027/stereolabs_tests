@@ -17,7 +17,7 @@ private:
   void transform_matrix(
       const std::array<std::array<double, MATRIX_SIZE>, MATRIX_SIZE> &,
       const std::vector<point3D> &, std::vector<point3D> &);
-  bool is_red(std::array<uint16_t, 3>&);
+  bool is_red(std::array<uint16_t, 3> &);
   Parser _parser;
   std::array<std::vector<point3D>, 2> _transform_points;
 };

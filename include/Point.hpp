@@ -3,15 +3,15 @@
 #include <array>
 
 enum {
-       RED = 0,
-       GREEN = 1,
-       BLUE = 2,
+  RED   = 0,
+  GREEN = 1,
+  BLUE  = 2,
 };
 
 enum {
-       HUE = 0,
-       SATURATION = 1,
-       VALUE = 2,
+  HUE        = 0,
+  SATURATION = 1,
+  VALUE      = 2,
 };
 
 struct point3D {
