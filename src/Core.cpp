@@ -1,6 +1,7 @@
 #include <array>
 #include <vector>
 #include <iostream>
+#include <cmath>
 
 #include "Point.hpp"
 #include "Core.hpp"
