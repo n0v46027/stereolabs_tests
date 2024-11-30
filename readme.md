@@ -17,3 +17,11 @@
 ## openCV
 
 - openCv official documentation https://docs.opencv.org/
+- create openCv window https://www.geeksforgeeks.org/opencv-c-plus-plus-program-to-create-a-single-colored-blank-image/
+- handle openCv pixel https://stackoverflow.com/questions/23001512/c-and-opencv-get-and-set-pixel-color-to-mat
+- handle image https://learnopencv.com/read-display-and-write-an-image-using-opencv/#write-image
+
+## Comments
+
+I hope my implementation of your test case fullfill your expectations and I look forward to meet you in person
+Antoine Lê

@@ -9,6 +9,11 @@
 #include "Point.hpp"
 #include "Core.hpp"
 
+static const uint16_t WIDTH = 511;
+static const uint16_t HEIGHT = 287;
+static const char FILE_1[] = "img1.png";
+static const char FILE_2[] = "img2.png";
+
 Core::Core() : _parser(Parser()) {
 }
 
@@ -41,11 +46,11 @@ bool Core::is_red(std::array<uint16_t, 3> &rgb) {
   int s         = hsv[1];
   int v         = hsv[2];
 
-  bool hueInRange        = (h >= 0 && h <= 10) || (h >= 160 && h <= 180);
-  bool saturationInRange = (s > 100);
-  bool valueInRange      = (v > 100);
+  bool hue_in_range        = (h >= 0 && h <= 10) || (h >= 160 && h <= 180);
+  bool saturation_in_range = (s > 100);
+  bool value_in_range      = (v > 100);
 
-  return hueInRange && saturationInRange && valueInRange;
+  return hue_in_range && saturation_in_range && value_in_range;
 }
 
 void Core::compute_distance(std::vector<point3D> &transform_points) {
@@ -60,6 +65,17 @@ void Core::compute_distance(std::vector<point3D> &transform_points) {
   }
 }
 
+void Core::save_img(const char filename[], std::vector<point3D> &transform_point) {
+  cv::Mat img(HEIGHT, WIDTH, CV_8UC3, cv::Scalar(0,0, 0));
+  for (auto &point: transform_point) {
+    if (point._is_in_range) {
+        cv::Vec3b &pixel = img.at<cv::Vec3b>(point._points2D.at(1), point._points2D.at(0));
+        pixel[2] = 255;
+    }
+  }
+  cv::imwrite(filename, img);
+}
+
 void Core::run() {
   transform_matrix(_parser.get_matrix().at(CLOUD_POINT_1),
                    _parser.get_points().at(CLOUD_POINT_1),
@@ -69,6 +85,9 @@ void Core::run() {
                    _transform_points.at(CLOUD_POINT_2));
   compute_distance(_transform_points.at(CLOUD_POINT_1));
   compute_distance(_transform_points.at(CLOUD_POINT_2));
+  save_img(FILE_1, _transform_points.at(CLOUD_POINT_1));
+  save_img(FILE_2, _transform_points.at(CLOUD_POINT_2));
+
 }
 
 Core::~Core() {
