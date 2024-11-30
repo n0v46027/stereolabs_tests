@@ -9,10 +9,10 @@
 #include "Point.hpp"
 #include "Core.hpp"
 
-static const uint16_t WIDTH = 511;
+static const uint16_t WIDTH  = 511;
 static const uint16_t HEIGHT = 287;
-static const char FILE_1[] = "img1.png";
-static const char FILE_2[] = "img2.png";
+static const char FILE_1[]   = "img1.png";
+static const char FILE_2[]   = "img2.png";
 
 Core::Core() : _parser(Parser()) {
 }
@@ -65,12 +65,14 @@ void Core::compute_distance(std::vector<point3D> &transform_points) {
   }
 }
 
-void Core::save_img(const char filename[], std::vector<point3D> &transform_point) {
-  cv::Mat img(HEIGHT, WIDTH, CV_8UC3, cv::Scalar(0,0, 0));
-  for (auto &point: transform_point) {
+void Core::save_img(const char filename[],
+                    std::vector<point3D> &transform_point) {
+  cv::Mat img(HEIGHT, WIDTH, CV_8UC3, cv::Scalar(0, 0, 0));
+  for (auto &point : transform_point) {
     if (point._is_in_range) {
-        cv::Vec3b &pixel = img.at<cv::Vec3b>(point._points2D.at(1), point._points2D.at(0));
-        pixel[2] = 255;
+      cv::Vec3b &pixel =
+          img.at<cv::Vec3b>(point._points2D.at(1), point._points2D.at(0));
+      pixel[2] = 255;
     }
   }
   cv::imwrite(filename, img);
@@ -87,7 +89,6 @@ void Core::run() {
   compute_distance(_transform_points.at(CLOUD_POINT_2));
   save_img(FILE_1, _transform_points.at(CLOUD_POINT_1));
   save_img(FILE_2, _transform_points.at(CLOUD_POINT_2));
-
 }
 
 Core::~Core() {
