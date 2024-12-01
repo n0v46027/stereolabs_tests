@@ -29,11 +29,13 @@ void Core::transform_point_with_matrix(
     const std::array<std::array<double, MATRIX_SIZE>, MATRIX_SIZE> &matrix,
     const std::vector<point3D> &points,
     std::vector<point3D> &transform_points) {
-  point3D new_point = {0};  // set a point to fill the transform_point data structure
+  point3D new_point = {
+      0};  // set a point to fill the transform_point data structure
 
   for (auto point : points) {                // iterate throug all the point
     for (int i = 0; i < MATRIX_SIZE; i++) {  // iterate through matrix in y
-      for (int j = 0; j < MATRIX_SIZE; j++) {  // iterate through the matrix in x
+      for (int j = 0; j < MATRIX_SIZE;
+           j++) {  // iterate through the matrix in x
         new_point._points3D.at(i) +=
             point._points3D.at(j) *
             matrix.at(i).at(j);  // apply transformation to the point
@@ -97,7 +99,8 @@ void Core::compute_distance(std::vector<point3D> &transform_points) {
     distance = std::sqrt((point._points3D.at(0) * point._points3D.at(0)) +
                          (point._points3D.at(1) * point._points3D.at(1)) +
                          (point._points3D.at(2) * point._points3D.at(2)));
-    if (is_red(point._rgb) && distance >= 1 && distance <= 2) {  // check if the point is red and if his distance is
+    if (is_red(point._rgb) && distance >= 1 &&
+        distance <= 2) {  // check if the point is red and if his distance is
                           // between 1 meter and 2 meter
       point._is_in_range =
           true;  // set the boolean at true if the condition is true

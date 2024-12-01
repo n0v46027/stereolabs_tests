@@ -5,7 +5,6 @@
 #include <tuple>
 #include "parsing/Parser.hpp"
 
-
 // class to handle computation
 class Core {
 public:
