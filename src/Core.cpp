@@ -1,9 +1,7 @@
 #include <array>
 #include <vector>
-#include <iostream>
 #include <cmath>
 #include <algorithm>
-#include <tuple>
 #include <opencv2/opencv.hpp>
 
 #include "Point.hpp"
@@ -59,7 +57,7 @@ void Core::compute_distance(std::vector<point3D> &transform_points) {
         std::sqrt((point._points3D.at(0) * point._points3D.at(0)) +
                   (point._points3D.at(1) * point._points3D.at(1)) +
                   (point._points3D.at(2) * point._points3D.at(2)));
-    if (distance >= 1 && distance <= 2 && is_red(point._rgb)) {
+    if (is_red(point._rgb) && distance >= 1 && distance <= 2) {
       point._is_in_range = true;
     }
   }
@@ -69,7 +67,7 @@ void Core::save_img(const char filename[], std::vector<point3D> &transform_point
   cv::Mat img(HEIGHT, WIDTH, CV_8UC3, cv::Scalar(0,0, 0));
   for (auto &point: transform_point) {
     if (point._is_in_range) {
-        cv::Vec3b &pixel = img.at<cv::Vec3b>(point._points2D.at(1), point._points2D.at(0));
+        cv::Vec3b &pixel = img.at<cv::Vec3b>(point._points2D.at(0), point._points2D.at(1));
         pixel[2] = 255;
     }
   }

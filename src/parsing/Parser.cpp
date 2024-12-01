@@ -1,5 +1,4 @@
 #include <fstream>
-#include <iostream>
 #include <string>
 #include <cmath>
 
@@ -27,7 +26,7 @@ std::array<std::vector<point3D>, 2> Parser::get_points() const {
 void Parser::parse(int cloud_nb) {
   std::ifstream file(CLOUD_POINT_PATH[cloud_nb]);
   std::string line;
-  point3D point;
+  point3D point = {0};
 
   if (!file.is_open())
     throw std::runtime_error(FILE_ERROR);
@@ -51,6 +50,7 @@ void Parser::parse(int cloud_nb) {
         !std::isnan(point._points3D[2])) {
       _points[cloud_nb].push_back(point);
     }
+    point3D point = {0};
   }
   file.close();
 }
