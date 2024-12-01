@@ -1,5 +1,16 @@
 # Sourcing of the technical test
 
+## build
+
+the build system is cmake you can run ./utils/build.sh to build
+
+## CI/CD
+
+I set up some action for better code
+
+- build action to check compilation on ubuntu because i work on mac os
+- Linter action to ensure my code is well formatted (if not it will push a commit by itself with the formatted code)
+
 ## matrix
 
 - little refresh about matricial algebra = https://www.youtube.com/watch?v=IrggOvOSZr4
